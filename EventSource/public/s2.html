@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection</title>
+</head>
+<body>
+    <h1>Anomaly Detection Notifications</h1>
+    <div id="notifications"></div>
+    <button id="produceAnomaly">Produce Anomaly</button>
+<script>
+    let userId;
+
+    const ws = new WebSocket('ws://localhost:3000');
+
+    ws.onopen = () => {
+        console.log('Connected to the WebSocket server');
+    };
+
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log(data)
+        const { userId: messageUserId, m } = data;
+        
+        const notificationsDiv = document.getElementById('notifications');
+        const notificationElement = document.createElement('div');
+        
+        console.log(userId)
+        console.log(messageUserId)
+
+        if (userId === messageUserId) {
+            notificationElement.textContent = `${m.timestamp}: You produced an anomaly - ${m.message}`;
+        } else {
+            notificationElement.textContent = `${m.timestamp}: User ${messageUserId} produced an anomaly - ${m.message}`;
+        }
+
+        notificationsDiv.appendChild(notificationElement);
+    };
+
+    ws.onclose = () => {
+        console.log('Disconnected from the WebSocket server');
+    };
+
+    document.getElementById('produceAnomaly').addEventListener('click', () => {
+        const anomaly = {
+            type: 'anomaly',
+            message: 'An anomaly has been produced by the user!',
+            timestamp: new Date().toISOString(),
+        };
+
+        ws.send(JSON.stringify(anomaly));
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+2024-06-16 04:39:41,742 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@177] - Reading configuration from: /Users/harshit_nagpal/asr_project/apache-zookeeper-3.9.2-bin/bin/../conf/zoo.cfg
+2024-06-16 04:39:41,743 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@440] - clientPortAddress is 0.0.0.0:2181
+2024-06-16 04:39:41,744 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@444] - secureClientPort is not set
+2024-06-16 04:39:41,744 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@460] - observerMasterPort is not set
+2024-06-16 04:39:41,744 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@477] - metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider
+2024-06-16 04:39:41,745 [myid:] - INFO  [main:o.a.z.s.DatadirCleanupManager@78] - autopurge.snapRetainCount set to 3
+2024-06-16 04:39:41,745 [myid:] - INFO  [main:o.a.z.s.DatadirCleanupManager@79] - autopurge.purgeInterval set to 0
+2024-06-16 04:39:41,745 [myid:] - INFO  [main:o.a.z.s.DatadirCleanupManager@101] - Purge task is not scheduled.
+2024-06-16 04:39:41,745 [myid:] - WARN  [main:o.a.z.s.q.QuorumPeerMain@139] - Either no config or no quorum defined in config, running in standalone mode
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.j.ManagedUtil@46] - Log4j 1.2 jmx support not found; jmx disabled.
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@177] - Reading configuration from: /Users/harshit_nagpal/asr_project/apache-zookeeper-3.9.2-bin/bin/../conf/zoo.cfg
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@440] - clientPortAddress is 0.0.0.0:2181
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@444] - secureClientPort is not set
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@460] - observerMasterPort is not set
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.q.QuorumPeerConfig@477] - metricsProvider.className is org.apache.zookeeper.metrics.impl.DefaultMetricsProvider
+2024-06-16 04:39:41,746 [myid:] - INFO  [main:o.a.z.s.ZooKeeperServerMain@123] - Starting server
+2024-06-16 04:39:41,751 [myid:] - INFO  [main:o.a.z.s.ServerMetrics@64] - ServerMetrics initialized with provider org.apache.zookeeper.metrics.impl.DefaultMetricsProvider@618b19ad
+2024-06-16 04:39:41,753 [myid:] - INFO  [main:o.a.z.s.a.DigestAuthenticationProvider@51] - ACL digest algorithm is: SHA1
+2024-06-16 04:39:41,753 [myid:] - INFO  [main:o.a.z.s.a.DigestAuthenticationProvider@65] - zookeeper.DigestAuthenticationProvider.enabled = true
+2024-06-16 04:39:41,754 [myid:] - INFO  [main:o.a.z.s.p.FileTxnSnapLog@124] - zookeeper.snapshot.trust.empty : false
+2024-06-16 04:39:41,755 [myid:] - ERROR [main:o.a.z.s.ZooKeeperServerMain@81] - Unable to access datadir, exiting abnormally
+org.apache.zookeeper.server.persistence.FileTxnSnapLog$DatadirException: Unable to create data directory /data/zookeeper/version-2
+	at org.apache.zookeeper.server.persistence.FileTxnSnapLog.<init>(FileTxnSnapLog.java:136)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.runFromConfig(ZooKeeperServerMain.java:139)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.initializeAndRun(ZooKeeperServerMain.java:113)
+	at org.apache.zookeeper.server.ZooKeeperServerMain.main(ZooKeeperServerMain.java:68)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:141)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:91)
+Unable to access datadir, exiting abnormally
+2024-06-16 04:39:41,756 [myid:] - INFO  [main:o.a.z.a.ZKAuditProvider@42] - ZooKeeper audit is disabled.
+2024-06-16 04:39:41,756 [myid:] - ERROR [main:o.a.z.u.ServiceUtils@48] - Exiting JVM with code 3

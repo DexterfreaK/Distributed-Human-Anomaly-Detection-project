@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anomaly Detection</title>
+  </head>
+  <body>
+    <h1>Anomaly Detection Notifications</h1>
+    <div>
+      <label for="userId">User ID:</label>
+      <input type="text" id="userId" name="userId" />
+      <button onclick="sendAnomaly()">Simulate Anomaly</button>
+    </div>
+    <div id="notifications"></div>
+
+    <script>
+      const ws = new WebSocket("ws://localhost:3000");
+
+      ws.onopen = () => {
+        console.log("Connected to the WebSocket server");
+      };
+
+      function parseISOString(s) {
+        var b = s.split(/\D+/);
+        return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+      }
+
+      ws.onmessage = (event) => {
+        const notification = JSON.parse(event.data);
+        const notificationsDiv = document.getElementById("notifications");
+        const notificationElement = document.createElement("div");
+        notificationElement.textContent = `${parseISOString(notification.timestamp)} - User ${notification.userId}: ${notification.message}`;
+        notificationsDiv.appendChild(notificationElement);
+      };
+
+      ws.onclose = () => {
+        console.log("Disconnected from the WebSocket server");
+      };
+
+      function sendAnomaly() {
+        const userId = document.getElementById("userId").value;
+        const anomalyData = {
+          userId,
+          message: "An anomaly has been detected!",
+          timestamp: new Date().toISOString(),
+        };
+        ws.send(JSON.stringify(anomalyData));
+      }
+    </script>
+  </body>
+</html>
